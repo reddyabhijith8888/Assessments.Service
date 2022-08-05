@@ -1,0 +1,45 @@
+{
+	"preTestsOnTop": 2,
+	"listOfQuestions": [
+		{
+			"assessmentType": "Pretest",
+			"assessmentTypeId": 1
+		},
+		{
+			"assessmentType": "Pretest",
+			"assessmentTypeId": 2
+		},
+		{
+			"assessmentType": "Pretest",
+			"assessmentTypeId": 3
+		},
+		{
+			"assessmentType": "Pretest",
+			"assessmentTypeId": 4
+		},
+		{
+			"assessmentType": "Operational",
+			"assessmentTypeId": 5
+		},
+		{
+			"assessmentType": "Operational",
+			"assessmentTypeId": 6
+		},
+		{
+			"assessmentType": "Operational",
+			"assessmentTypeId": 7
+		},
+		{
+			"assessmentType": "Operational",
+			"assessmentTypeId": 8
+		},
+		{
+			"assessmentType": "Operational",
+			"assessmentTypeId": 9
+		},
+		{
+			"assessmentType": "Operational",
+			"assessmentTypeId": 10
+		}
+	]
+}
