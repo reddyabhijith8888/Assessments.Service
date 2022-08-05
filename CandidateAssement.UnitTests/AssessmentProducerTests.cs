@@ -29,7 +29,7 @@ namespace CandidateAssement.UnitTests
         [InlineData(4)]
         public void WhenInputWithNoOfQuestionsOnTopIsPassedToTestProducer_ThenResponseShouldContainTopQuestionsAsExpectedInInput(int noOfQuestions)
         {
-            var data = TestData.TestData.GetOriginalTestData();
+            var data = TestData.TestData.GetRecordsByQuantity(10);
             var result = _producer.ProduceAsync(data, noOfQuestions).ToList();
 
             for (int i = 0; i < noOfQuestions; i++)
@@ -43,7 +43,7 @@ namespace CandidateAssement.UnitTests
         [InlineData(7)]
         public void WhenRequestedQuestionsOnTopAreMoreThanInTheRequest_ThenTestProducerValidatesAndReturnError(int noOfQuestions)
         {
-            var data = TestData.TestData.GetOriginalTestData();
+            var data = TestData.TestData.GetRecordsByQuantity(10);
             Action result = () => _producer.ProduceAsync(data, noOfQuestions);
             // Never check the error messages in tests since these might be changing depending on the business requirement.
             //the reason of checking over here is to prove this is giving the write error/exception
@@ -56,9 +56,31 @@ namespace CandidateAssement.UnitTests
         [InlineData(2)]
         public void WhenAnEmptyInputIsPassedToShuffler_ThenResponseShouldThrowException(int noOfQuestions)
         {
-            var data = TestData.TestData.GetOriginalTestData();
+            var data = TestData.TestData.GetRecordsByQuantity(10);
             Action result = () => _producer.ProduceAsync(null, noOfQuestions);
             result.Should().Throw<ArgumentNullException>();
+        }
+
+        [Theory]
+        [InlineData(2)]
+        public void WhenMoreThanTenQuestionsInInput_ThenResponseShouldThrowException(int noOfQuestions)
+        {
+            var data = TestData.TestData.GetRecordsByQuantity(11);
+            Action result = () => _producer.ProduceAsync(data, noOfQuestions);
+            // Never check the error messages in tests since these might be changing depending on the business requirement.
+            //the reason of checking over here is to prove this is giving the write error/exception
+            result.Should().Throw<ArgumentException>().WithMessage("should be equal to 10 questions only");
+        }
+
+        [Theory]
+        [InlineData(2)]
+        public void WhenLessThanTenQuestionsInInput_ThenResponseShouldThrowException(int noOfQuestions)
+        {
+            var data = TestData.TestData.GetRecordsByQuantity(4);
+            Action result = () => _producer.ProduceAsync(data, noOfQuestions);
+            // Never check the error messages in tests since these might be changing depending on the business requirement.
+            //the reason of checking over here is to prove this is giving the write error/exception
+            result.Should().Throw<ArgumentException>().WithMessage("should be equal to 10 questions only");
         }
     }
 }

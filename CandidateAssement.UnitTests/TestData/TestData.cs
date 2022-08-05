@@ -23,7 +23,14 @@ namespace CandidateAssement.UnitTests.TestData
                 new Assessment{AssessmentType = AssessmentTypeEnum.Operational, AssessmentTypeId = "8"},
                 new Assessment{AssessmentType = AssessmentTypeEnum.Operational, AssessmentTypeId = "9"},
                 new Assessment{AssessmentType = AssessmentTypeEnum.Pretest, AssessmentTypeId = "10"},
+                new Assessment{AssessmentType = AssessmentTypeEnum.Operational, AssessmentTypeId = "11"},
+                new Assessment{AssessmentType = AssessmentTypeEnum.Pretest, AssessmentTypeId = "12"},
             };
+        }
+
+        internal static IReadOnlyList<Assessment> GetRecordsByQuantity(int noOfRecords)
+        {
+            return GetOriginalTestData().Take(noOfRecords).ToList();
         }
     }
 }

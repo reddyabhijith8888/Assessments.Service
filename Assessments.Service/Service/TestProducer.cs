@@ -21,6 +21,9 @@ namespace Assessments.Service.Service
             {
                 if (listOfItems == null || listOfItems.Count == 0) throw new ArgumentNullException(nameof(listOfItems));
 
+                if (listOfItems.Count != 10) throw new ArgumentException("should be equal to 10 questions only");
+
+
                 var ispretestQuestionsAvailable = listOfItems.Count(x => x.AssessmentType == AssessmentTypeEnum.Pretest) < noOfPretestQuestionsOnTop;
 
                 if(ispretestQuestionsAvailable)
