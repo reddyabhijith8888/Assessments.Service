@@ -11,3 +11,6 @@ rather than 100% coverage
 # TODO
 - Implement Exception Middleware to handle any kind of handled and unhandled exceptions in the application
 - Implement some concrete logging techniques
+
+# Note
+This application does not validate fixed set of questions i.e. 10, this can be scaled and can handle any no of questions based on a configuration file included in the Host Project. 
